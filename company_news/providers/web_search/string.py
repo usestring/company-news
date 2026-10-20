@@ -13,7 +13,7 @@ def _parse(payload: Any) -> list[Hit]:
 
 
 def _build(case: Case):
-    return "POST", "https://request.usestring.ai/v1/search", {"Authorization": f"Bearer {os.environ['STRING_API_KEY']}", "Content-Type": "application/json"}, {"query": case.question, "engine": "google"}, None, 45
+    return "POST", "https://request.usestring.ai/v1/search", {"Authorization": f"Bearer {os.environ['STRING_API_KEY']}", "Content-Type": "application/json"}, {"query": case.question, "engine": "google", "searchCount": 10}, None, 45
 
 
 ADAPTERS = [WebAdapter("string", "https://portal.usestring.ai/docs/api-reference/search", ("STRING_API_KEY",), _build, _parse)]
